@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html ng-app=''>
+<html ng-app='firstApp'>
   <head>
     <meta charset="utf-8">
     <title>Reddit Clone</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'></script>
-    <script src='app.js'></script>
+    <script src='app2.js'></script>
   </head>
   <body>
     <input ng-model="name"  type="text" placeholder="What is your name">
     <h1 ng-init="name='Bojack'"> Hi, my name is {{name}}</h1>
+
+
+    <p>The array [99,43,22] is {{ [99,43,22].length }} items long.</p>
+    <p> 1+5={{1+5}}</p>
+    <p> my name is {{'bojack' + ' horseman'}}</p>
+    <h2> Currency filter example</h2>
+    <p>The real number is 73.092446347 and is displayed as {{73.092446347 | currency}}</p>
+    <p>The real number is 73.092446347 and is displayed as {{73.092446347 | currency: '€'}} with the Euro filter</p>
 
     <select ng-model='animals'>
       <option>Dogs</option>
@@ -19,5 +27,57 @@
       <option>Neither</option>
     </select>
     <h3>I love {{animals}}</h3>
+
+    <h2>Caps Filter</h2>
+    <input type='text' ng-model='capsName'>
+    <p>My capitalized name is : {{capsName | uppercase}}</p>
+
+    <h3>Digit Filtering!</h3>
+    <label>How many digits do you want to show?</label>
+    <select ng-model='digits'>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+    <p> The
+      <ng-pluralize count="digits" when="{'0': '',
+                           '1': 'First Digit of Pi :  {{3.1346346 | number:1}}',
+                           '2': 'First two digits of Pi:   {{3.1346346 | number:2}}',
+                           '3': 'Three digits of Pi:  {{3.1346346 | number:3}}',
+                           '4': 'Four digits of Pi:  {{3.1346346 | number:4}}'}">
+    </p>
+
+
+    <h1>Super Userful Tip Calculator McThingy</h1>
+    <label>How much did your meal cost</label>
+    <input ng-model='meal' type='text'>
+    <label>How much would you like to tip</label>
+    <select ng-model='tip'>
+      <option value=.1>10%</option>
+      <option value=.2>20%</option>
+      <option value=.3>30%</option>
+    </select>
+    <p> Meal Total:{{meal | currency}}</p>
+    <p> Tip: {{meal * tip | currency}}</p>
+
+    <h1>Is this expression invalid? : {{}}</h1>
+
+
+    <h1>Getting to know Controllers:</h1>
+    <div ng-controller="MyFirstController">
+      <h1>My name is: {{name}}</h1>
+      <input ng-model="name" type="text" placeholder="What is your name">
+    </div>
+
+    <h1>Excercises Controller Dawg</h1>
+    <div ng-controller='ExercisesController'>
+        <h2> Seconds in a century = {{secondsInACentury | number: 2}}</h2>
+        <p> my most favoritest of colors is {{color}}</p>
+        <p> the date today is:  {{rightNow}}</p>
+        <p> the other way is : {{date  | date: 'EEEE, MMMM d, y'}}</p>
+        <p> or : {{date  | date: 'yyyy-MM-dd HH:mm:ss Z'}}</p>
+    </div>
+
   </body>
 </html>

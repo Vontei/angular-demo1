@@ -1,3 +1,4 @@
+# 1.1
 
 ### What is angular
 
@@ -41,7 +42,7 @@ to create dynamic, fast, single page applications in a fraction of the time.
 ### What is ng?
 * ng is abbreviation for angular and referencing it gives you access to its directives.
 
-
+# 1.2
 ### What does ng-model do?
 * ng-model is a directive that binds different types of inputs to a property on the scope using a controller.
 ### What is "dirty checking"?
@@ -74,3 +75,39 @@ Its a dirty field if its value has changed.
 * This is the internal Angular Event Loop
 *  These $watch lists are resolved in the $digest loop through a process called dirty checking.
 * Values are put on a $watch in a $watchList and if a value has not changed it skips to the next watch and checks it, if it has changed then it records that change, updates, and continues down the list.
+
+
+### Notes:
+* you cannot write loops or conditionals inside angular expressions: {{}} ... angular has its own way of dealing with those things.
+
+# 1.3
+
+### What are Angular expressions? How do they compare to EJS/ERB tags?
+* {{}} vs <% %>   Erb tags  are interpreted server side before it hits angular.  Expressions are evaluated in the digest loop (two way data binding) on the client.
+
+### What happens when you write invalid code in an expression?
+* Its pretty awesome, it immediately breaks all expressions. I think the $digest loop breaks on return until it is fixed..thus Angular stops in its tracks.
+
+### What type of error do you get?
+
+* I got a [$parse: syntax] error.  The expression was not parsed correctly according to angulars rules and thus cannot be evaluated.  The REGEX breaks, and then it can't compile.
+
+### What are Angular filters? Name 4 built-in filters, including one that we haven't used yet.
+
+* Filters format an expression to a particular, desired display, to the user.
+* Min , max, number, trim, currency, reverse, uppercase, degrees, startsWith, remove, fuzzy, etc. AWESOMEEENESSSS
+
+### We'll soon see how to create custom filters. What is a use case for a custom filter?
+
+
+### What is $scope?
+* $scope is an angular object, and technically a service,  that defines the scope of the controller it is passed to.  In use, it would be called dependency injection, where $scope is an angular object being passed to a function.  Passing objects to functions is the premise of dependency injection. Its a simple concept but a powerful one.  Objects a dynamic, mutable, and change over time, (as your models and data change). Being able to pass those to a function rather than defining them inside the scope of the function, is advantageous.
+
+### What are Angular modules?
+* A module is a collection of configurations and code blocks that are applied to your application.  Modules are containers for different parts of your application, services, controllers, directives, filters, and so on. Using the ng-app directive in you html file will connect the specified module to your view.
+
+### Why do we pass in $scope as an argument to controller functions?
+*Directive declare the $watch expressions.. and tell the $watchList what to track. Those expressions are bound to a particular scope that is declared by the controller. Passing the angular $scope object, more or less instantiates a new scope for that particular controller, both in the module, and in the view. It creates a specified storage area to for that controller to reference data  that only IT cares about.
+
+### In Express, what are angular controllers most analogous to?
+* Controllers are similar to routes or to controllers folders in a standard MVC framework.. they define a certain scope for the data and view they are linked to.  Routes call data, clean and define it in some way.. and them pass the data as an object to the view.  Controllers in angular are similar, except they can be even more specific.. in that they can render multiple views on one page, while maintaining their own scope..  and Boom..the single page app is born. 
