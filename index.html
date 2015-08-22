@@ -79,5 +79,55 @@
         <p> or : {{date  | date: 'yyyy-MM-dd HH:mm:ss Z'}}</p>
     </div>
 
+    <div ng-controller='directivePractice'>
+      <h2>Directives Practice</h2>
+        <ul>
+          <li ng-repeat='name in names'>
+            {{name}}
+          </li>
+        </ul>
+      <h3> Repeating symbols</h3>
+        <ul>
+          <li ng-repeat='card in symbols'>
+            {{card}}
+          </li>
+        </ul>
+        <p>Repeating duplicates in an array with track by $index</p>
+        <ul>
+          <li ng-repeat='number in numbers track by $index'>
+            {{number}}
+          </li>
+        </ul>
+        <p>Repeating over object keys</p>
+        <ul>
+          <li ng-repeat='key in address'>
+            {{key}}
+          </li>
+        </ul>
+    </div>
+
+    <h3> The values of the directive expression here evaluate to true or false,
+         and show if true and ng-show and hide if true and ng-hide. Anf vice versa.</h3>
+    <div ng-show="3 + 4 == 5">
+      3 + 4 isn't 5, don't show
+    </div>
+
+    <div ng-show="3 + 4 == 7">
+      3 + 4 is 7, do show
+    </div>
+
+    <div ng-hide="3 + 4 == 5">
+        3 + 4 isn't 5, don't hide
+    </div>
+
+    <div ng-hide="3 + 4 == 7">
+      3 + 4 is 7, do hide
+    </div>
+
+
+
+
+
+
   </body>
 </html>
