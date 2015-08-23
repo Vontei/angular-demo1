@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Reddit Clone</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel='stylesheet' href='app.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'></script>
     <script src='app2.js'></script>
@@ -124,9 +125,29 @@
       3 + 4 is 7, do hide
     </div>
 
+    <div ng-controller='passwordController'>
+    <h1>Sign Up Page</h1>
+    <input ng-class='highlight' type='password' ng-model='password'>
+    <p>Your password is {{password.length}} characters long.</p>
+    <button ng-show="password.length >= 6">Sign Up</button>
+    <p ng-show="password.length < 6"> Not long enough</p>
+    </div>
 
 
+    <h1>Camera Shop Exercise</h1>
+    <div ng-controller='camController'>
+    <select ng-model='sort'>
+      <option value='-price'>Price</option>
+      <option value='-rating'>Rating</option>
+    </select>
+    <div ng-repeat="key in cameras | orderBy: sort">
+      <h4>{{key.title}}</h4>
+      <p>Price: {{key.price | currency}}</p>
+      <p>Rating: {{key.rating}}</p>
+      <img ng-src={{key.image}} height='125' width='150'>
 
+    </div>
+    </div>
 
 
   </body>
