@@ -12,7 +12,33 @@
 
 
 
+
+
 .show{
   color: orange;
   display: inline;
+}
+
+.green{
+  background-color: rgb(19, 215, 15);
+}
+
+.borange{
+  background-color: rgb(242, 106, 7);
+}
+
+.blue{
+  background-color: rgb(24, 115, 236);
+}
+
+.pong div{
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
+  height: 150px;
+  color: white;
+}
+
+.pong div button{
+  color: black;
 }

@@ -99,6 +99,7 @@ Its a dirty field if its value has changed.
 
 ### We'll soon see how to create custom filters. What is a use case for a custom filter?
 
+# 1.4
 
 ### What is $scope?
 * $scope is an angular object, and technically a service,  that defines the scope of the controller it is passed to.  In use, it would be called dependency injection, where $scope is an angular object being passed to a function.  Passing objects to functions is the premise of dependency injection. Its a simple concept but a powerful one.  Objects a dynamic, mutable, and change over time, (as your models and data change). Being able to pass those to a function rather than defining them inside the scope of the function, is advantageous.
@@ -122,6 +123,7 @@ angular needs a way to recognize it, thus it has its own directive.
 * <a ng-href="http://www.gravatar.com/avatar/{{hash}}">link1</a>
 Its a similar problem with href.  Angular needs to identify its own expression before the user clicks it and it directs to a broken link.  Using ng-href ensures that angular will watch that link for a click event and direct it appropriately.
 
+# 1.5
 
 ### What are directives?
 * Directives are angular verbs.  They allow angular to connect controllers and models to views.  They are predefined attributes placed in HTML tags which tell angular what to do and how.  You can also, however, create custom directives... a key difference between angular and other competitors like Knockout.js. You can also use directives like xml or html markup itself. Its easier to read as long as the naming conventions and overall architecture are taken into consideration. Pretty Awesome.
@@ -143,3 +145,9 @@ By default, ngRepeat does not allow duplicate items in arrays. This is because w
 * If you do need to repeat duplicate items, you can substitute the default tracking behavior with your own using the track by expression.
 
 * For example, you may track items by the index of each item in the collection, using the special scope property $index.
+
+
+# 1.6
+
+### Why does number update in the template without us telling it to?
+* Setting the function in the same controller gives us access to its $scope variables and functions. Thus, calling a function in that controller that changes the number allows us to actively change it because the data is bound.  The {{number}} expression is bound to $scope.number,  which is then changed by the function in the same controller.  It is bound, and in every churn of the $digest loop the $watch is updated. 
