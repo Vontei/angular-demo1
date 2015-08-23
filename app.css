@@ -5,3 +5,14 @@
 .invalid {
   background-color: rgb(255, 92, 87);
 }
+
+.orange{
+  color: orange;
+}
+
+
+
+.show{
+  color: orange;
+  display: inline;
+}

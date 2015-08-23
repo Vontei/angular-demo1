@@ -142,7 +142,7 @@
     </select>
     <div ng-repeat="key in cameras | orderBy: sort">
       <h4>{{key.title}}</h4>
-      <p>Price: {{key.price | currency}}</p>
+      <p ng-class="{orange: key.onSale == true}">Price: {{key.price | currency}}<span ng-show='key.onSale == true' ng-class="{show: key.onSale == true}"> ON SALEE!!</span></p>
       <p>Rating: {{key.rating}}</p>
       <img ng-src={{key.image}} height='125' width='150'>
 

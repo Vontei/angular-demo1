@@ -107,7 +107,39 @@ Its a dirty field if its value has changed.
 * A module is a collection of configurations and code blocks that are applied to your application.  Modules are containers for different parts of your application, services, controllers, directives, filters, and so on. Using the ng-app directive in you html file will connect the specified module to your view.
 
 ### Why do we pass in $scope as an argument to controller functions?
-*Directive declare the $watch expressions.. and tell the $watchList what to track. Those expressions are bound to a particular scope that is declared by the controller. Passing the angular $scope object, more or less instantiates a new scope for that particular controller, both in the module, and in the view. It creates a specified storage area to for that controller to reference data  that only IT cares about.
+* Directive declare the $watch expressions.. and tell the $watchList what to track. Those expressions are bound to a particular scope that is declared by the controller. Passing the angular $scope object, more or less instantiates a new scope for that particular controller, both in the module, and in the view. It creates a specified storage area to for that controller to reference data  that only IT cares about.
+
 
 ### In Express, what are angular controllers most analogous to?
-* Controllers are similar to routes or to controllers folders in a standard MVC framework.. they define a certain scope for the data and view they are linked to.  Routes call data, clean and define it in some way.. and them pass the data as an object to the view.  Controllers in angular are similar, except they can be even more specific.. in that they can render multiple views on one page, while maintaining their own scope..  and Boom..the single page app is born. 
+* Controllers are similar to routes or to controllers folders in a standard MVC framework.. they define a certain scope for the data and view they are linked to.  Routes call data, clean and define it in some way.. and them pass the data as an object to the view.  Controllers in angular are similar, except they can be even more specific.. in that they can render multiple views on one page, while maintaining their own scope..  and Boom..the single page app is born.
+
+
+### Why use ng-src and ng-href?
+* `<img ng-src="http://www.gravatar.com/avatar/{{hash}}" alt="Description" />`
+ng-src is angular's built in directive for images.  It is most important when adding angular markup or expressions to a src path.
+angular needs a way to recognize it, thus it has its own directive.
+
+* <a ng-href="http://www.gravatar.com/avatar/{{hash}}">link1</a>
+Its a similar problem with href.  Angular needs to identify its own expression before the user clicks it and it directs to a broken link.  Using ng-href ensures that angular will watch that link for a click event and direct it appropriately.
+
+
+### What are directives?
+* Directives are angular verbs.  They allow angular to connect controllers and models to views.  They are predefined attributes placed in HTML tags which tell angular what to do and how.  You can also, however, create custom directives... a key difference between angular and other competitors like Knockout.js. You can also use directives like xml or html markup itself. Its easier to read as long as the naming conventions and overall architecture are taken into consideration. Pretty Awesome.
+
+### Does ng-class require an object to be passed in?
+* No, i do not believe that is the case.  ng-class can evaluate a string, object, or array. ng-class='style' or ng-class='{style: something == true}'.  Pretty awesome.  There are rules about naming conventions such as: when using a string... chaining multiple classes must be done with delimited spaces. Pretty straightforward, and the docs are explicit.
+
+### What order does an ng-repeat display items in?
+* When iterating over objects.. in 1.3 angular returns the keys alphabetically. Now in most recent versions, it is determined by the browser, and the browser more often than not, will return them in the order in which they were defined.
+
+### How does ng-repeat handle duplicate data?
+* When the contents of the collection change, ngRepeat makes the corresponding changes to the DOM:
+
+* When an item is added, a new instance of the template is added to the DOM.
+When an item is removed, its template instance is removed from the DOM.
+When items are reordered, their respective templates are reordered in the DOM.
+By default, ngRepeat does not allow duplicate items in arrays. This is because when there are duplicates, it is not possible to maintain a one-to-one mapping between collection items and DOM elements.
+
+* If you do need to repeat duplicate items, you can substitute the default tracking behavior with your own using the track by expression.
+
+* For example, you may track items by the index of each item in the collection, using the special scope property $index.
